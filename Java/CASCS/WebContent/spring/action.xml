@@ -1,0 +1,68 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+        
+        
+    <bean id="loginAction" class="com.asher.action.Member" scope="prototype">
+        <property name="studentService" ref="studentService"></property>
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    <bean id="addCourseAction" class="com.asher.action.teacher.course.AddCourseAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    <bean id="listCourseAction" class="com.asher.action.teacher.course.ListCourseAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    <bean id="removeCourseAction" class="com.asher.action.teacher.course.RemoveCourse">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    <bean id="teachingCourseAction" class="com.asher.action.teacher.course.AddTeaching">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    <bean id="listTeachingAction" class="com.asher.action.teacher.course.ListTeachingAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    <bean id="deleteTeachingAction" class="com.asher.action.teacher.course.DeleteTeaching">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    <bean id="listRoomAction" class="com.asher.action.teacher.room.ListRoom">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    
+    <bean id="addRoomAction" class="com.asher.action.teacher.room.AddRoom">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    
+    <bean id="listStudentAction" class="com.asher.action.teacher.studentManage.ListStudentAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    
+    <bean id="addStudentAction" class="com.asher.action.teacher.studentManage.AddStudent">
+        <property name="studentService" ref="studentService"></property>
+    </bean>
+    
+    <bean id="listTeacherAction" class="com.asher.action.teacher.ListTeacher">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    
+    <bean id="addTeacherAction" class="com.asher.action.teacher.AddTeacherAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    
+    <bean id="updateTeacherAction" class="com.asher.action.teacher.UpdateTeacherAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    
+    <bean id="changePasswordAction" class="com.asher.action.teacher.ChangePasswordAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+    
+    <bean id="listStudeltCourse" class="com.asher.action.student.ListCourseAction">
+        <property name="studentService" ref="studentService"></property>
+    </bean>
+    
+    <bean id="chooseCourseAction" class="com.asher.action.student.ChooseCourseAction">
+        <property name="studentService" ref="studentService"></property>
+    </bean>
+</beans>

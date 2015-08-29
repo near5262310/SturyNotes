@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="action" />
+
+    <package name="all" namespace="/" extends="struts-default">
+        <action name="login" class="loginAction" method="login">
+            <result name="success">/page/welcome.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+    </package>
+
+    <package name="student" namespace="/student" extends="struts-default">
+        <action name="save" class="saveStudentAcrion">
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        
+        <action name="update" class="updateStudentAction">
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        
+        <action name="listCourse" class="listStudeltCourse">
+            <result name="input">/page/student/listCourse.jsp</result>
+        </action>
+        
+        <action name="chooseCourse" class="chooseCourseAction">
+            <result name="input">/page/student/listCourse.jsp</result>
+        </action>
+    </package>
+
+    <package name="teacher" namespace="/teacher" extends="struts-default">
+        <action name="addCourse" class="addCourseAction">
+            <result name="input">/success.jsp</result>
+        </action>
+
+        <action name="listCourse" class="listCourseAction">
+            <result name="input">/page/teacher/listCourse.jsp</result>
+        </action>
+        
+        <action name="removeCourse" class="removeCourseAction">
+            <result name="success">/page/teacher/listCourse.jsp</result>
+        </action>
+        <action name="addTeaching" class="teachingCourseAction">
+            <result name="input">/page/teacher/listCourse.jsp</result>
+        </action>
+        
+         <action name="listTeaching" class="listTeachingAction">
+            <result name="input">/page/teacher/listTeaching.jsp</result>
+        </action>
+        
+        <action name="deleteTeaching" class="deleteTeachingAction">
+            <result name="input">/page/teacher/listTeaching.jsp</result>
+        </action>
+        
+        <action name="listRoom" class="listRoomAction">
+            <result name="input">/page/teacher/listRoom.jsp</result>
+        </action>
+        
+        <action name="addRoom" class="addRoomAction">
+            <result name="input">/page/teacher/listRoom.jsp</result>
+        </action>
+        
+        <action name="listStudent" class="listStudentAction">
+            <result name="input">/page/teacher/studentManage/listStudent.jsp</result>
+        </action>
+        
+        <action name="addStudent" class="addStudentAction">
+            <result name='input'>/page/teacher/studentManage/listStudent.jsp</result>
+        </action>
+        
+        <action name="listTeacher" class="listTeacherAction">
+            <result name="input">/page/teacher/teacherManage/listTeacher.jsp</result>
+        </action>
+        
+        <action name="addTeacher" class="addTeacherAction">
+            <result name="input">/page/teacher/teacherManage/listTeacher.jsp</result>
+        </action>
+        
+        <action name="updateTeacher" class="updateTeacherAction">
+            <result name="input">/page/teacher/teacherManage/listTeacher.jsp</result>
+        </action>
+        
+        <action name="changePassword" class="changePasswordAction">
+            <result name="input">/page/teacher/teacherManage/listTeacher.jsp</result>
+        </action>
+    </package>
+</struts>

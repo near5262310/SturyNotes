@@ -1,0 +1,40 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  	<meta charset="UTF-8">
+  	<title>AutoRefreshClock</title>
+  </head>
+  <body>
+  	<script type="text/javascript" src = "../lib/angular.js"></script>
+  	<div ng-app = "MyClock" ng-controller = "AutoRefresh">
+  		<h1> {{ clock.now }} </h1>
+  	</div>
+  	<script type="text/javascript">
+  		var clocke = angular.model("MyClock", []);
+
+  		function AutoRefresh($scope)
+  		{
+  			$scope.clock = 
+  				{
+  					now : new Date()
+  				};
+
+  				var autorefresh = function()
+  				{
+  					$scope.clock.now = new Date();
+  				};
+
+  				setInterval
+  				(
+  					function()
+  					{
+  						$scope.$apply(autorefresh);
+  					},
+  					1000
+  				);
+
+  				autorefresh();
+  		}
+  	</script>
+  </body>
+  </html>

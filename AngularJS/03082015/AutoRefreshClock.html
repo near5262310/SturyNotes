@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Clock</title>
+</head>
+<script type="text/javascript" src = "../lib/angular.js"></script>
+<body>
+	<div ng-controller = "ClockCollector">
+		<h1>{{ clock }}</h1>
+	</div>
+	<script type="text/javascript">
+		function ClockCollector ($scope, $timeout)
+		{
+			var autoRefreClock = function()
+			{
+				$scope.clock = new Date();
+				$timeout(function()
+					{
+						autoRefreClock();
+					},
+					1000);
+			}
+			autoRefreClock();
+		}
+	</script>
+</body>
+</html>
