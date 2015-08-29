@@ -5,4 +5,3 @@ git add README.md
 git commit -m "first commit"
 git remote add origin git@github.com:near5262310/StudyNotes.git
 git push -u origin master
-sad
