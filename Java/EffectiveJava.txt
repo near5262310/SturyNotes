@@ -1,0 +1,99 @@
+1:考虑用静态工厂方法代替构造器
+	优点：a.他们有名字可以确切的描述正被返回的对象。
+	b.不必在每次调用它们的时候都创建一个新的对象。
+	c.它们可以返回原返回类型的任何子类型对象
+	d.在创建参数类型化实例的时候,它们使代码变得更加简洁。
+	缺点：a.类如果不含公有的或者受保护的构造器，就不能被实例化。
+	b.它们与其他静态方法实际上没有任何区别。
+2：遇到多个构造器参数是要考虑用构造器
+	builder pattern
+
+	public class Student{
+		private String name;
+		private int age;
+		private boolean gender;
+		private String classes;
+
+		public static class Builder{
+			private String name;
+			private int age;
+			private boolean gender;
+			private String classes;
+			//required parameters
+			public Builder(String name){
+				this.name = name;
+			}
+			//Optional parameters
+			public Builder age(int val){
+				age = val;
+			}
+			public Builder gender(boolean val){
+				gender = val;
+			}
+			public Builder classes(String val){
+				classes = val;
+			}
+			public Student builder(){
+				return new Student(this);
+			}
+		}
+	private Student(Builder builder){
+		name = builder.name;
+		age = builder.age;
+		gender = builder.gender;
+		classes = builder.classes;
+	}
+	}
+
+	如果类的构造器或者静态工厂具有多个参数，
+	Builder模式就是种不错的选择，特别是大多数参数都是可选的情况下。
+3.用私有构造器或者枚举类型强化Singleton属性
+
+singleton:
+public class Evail{
+	public static final Evail INSTANCE = new Evail();
+	private Evail(){}
+}
+
+public class Evail{
+	private static final Evail INSTANCE = new Evail();
+	private Evail(){}
+	public Evail getInstance(){ return INSTANCE;}
+}
+
+如果有序列化需要 重写readResolve();
+private Object readResolve(){retuen INSTANCE;}
+
+public enum Evail(){
+	INSTANCE;
+	....
+}
+
+public class Evail{
+	private static class SingletonHandle(){
+		private static final Evail instance = new Evail();
+	}
+
+	private Evail();
+
+	public Evail getInstance(){
+		retuen new SingletonHandle().instance;
+	}
+}
+
+4.通过私有构造器强化不可实例化的能力
+Support default constructor for noninstantiability
+可抛出AssertationExceptioin();
+5.避免创建不必要的对象。
+String str = new String("ss");
+优先使用基本类型而不是包装类型，当心无意识的自动装箱
+6.消除过期的对象引用
+	即将其值变成null
+7.避免使用终结方法
+	finalizer 它是不可预知的也是危险的，一般情况下不要使用
+8.覆盖equals时遵守通用约定
+自反性 x != null  x.equals(x) true
+对称性 x,y != null x.equals(y) == y.equals(x)
+传递性 x,y,z != null x.equals(y)  y.equals(z) 》》 x.equals(z)
+一致性
+
